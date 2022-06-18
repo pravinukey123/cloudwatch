@@ -1,0 +1,25 @@
+CLOUDWATCH WITH CUSTOMIZE METRICS
+
+1) Launch the instance with ubuntu or ami image.
+2) Take ssh in moba.
+3)search on google aws cloudwatch perl script.
+4) follow the documents.
+5) sudo yum install -y perl-Switch perl-DateTime perl-Sys-Syslog perl-LWP-Protocol-https perl-Digest-SHA.x86_64
+6) curl https://aws-cloudwatch.s3.amazonaws.com/downloads/CloudWatchMonitoringScripts-1.2.2.zip -O
+7) unzip CloudWatchMonitoringScripts-1.2.2.zip && \
+   rm CloudWatchMonitoringScripts-1.2.2.zip && \
+   cd aws-scripts-mon
+8) put role ec2-cloudwatch or put secret key & secret access key in awscreds.conf file (exist awscreds.template)
+9) ./mon-get-instance-stats.pl
+10) ./mon-put-instance-data.pl --mem-util --mem-used --mem-avail --aggregated=only
+11) Now go to cloudwatch.
+12) ./mon-put-instance-data.pl --mem-util --mem-used --mem-avail --auto-scaling --swap-util --swap-used --disk-path=/ --disk-space-util --disk-space-used --disk-space-avail --memory-units=kilobytes
+13) go to cloudwatch - all metrics - custom name spaces - system/linux - instanceID - select metrics - actions - add to dashboard - create new dashboard - give name - create.
+14) create rule.
+15) In alarm - create alarm - select -metrics - select custom name space - ata a time only one namespace can be add.
+16) Eg. choose memory used - conditions - static - greater 40 - select existing or create new topic - make confirmation form mail -ec2 action - in alarm create alarm.
+17) eg choose cpu- utilization remainin same to create alarm. now increase the stress 
+    yes > /dev/null & (here & for run the process in the background).
+18) now the instance will be stop in few minutes.
+
+		Thank you! 
