@@ -1,0 +1,14 @@
+    CLOUDWATCH WITH EVENTBRIDGE
+
+1) launch instance with ec2-s3-cloudwatchlog-cloudwatchfullacess
+2) now go to cloudwatch create rule - eventbridge.
+3) create rule - my rule (rule name) - eventbus will default - select rule with an event pattern 
+4) Event source - AWS events or EventBridge partner events
+5) Event pattern - Event source - AWS service -EC2 -  Event type - EC2 ami state change - Any AMI State/Specific AMI State (optional)  - Any image ID/Specific image ID
+6) Target 1 - AWS service - EBS create snapshot - put volume id - 
+7) Execution role - will create automatically .
+8) we can add multiple targets.
+9) finsihed create rule.
+10) now we can stop the instane manuall or with help of alarm.
+
+		Thank you!
