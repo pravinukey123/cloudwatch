@@ -1,0 +1,40 @@
+CLOUDWATCH LOG AGENT USING PERL SCRIPT & STORES THE LOGS IN S3 BUCKET
+
+
+1)sudo yum update -y
+2) sudo yum install -y awslogs
+3) vim /etc/awslogs/awslogs.conf - put instance id in this file.
+4) vim /etc/awslogs/awscli.conf - put az of instance in this file.
+5) sudo systemctl start awslogsd
+6) sudo systemctl enable awslogsd.service
+7) Click on Export log data to Amazon S3 using the console in docs ,Export log data to Amazon S3 using the console .
+8) Copy Json format policy in s3 bucket ( bucket name is  logagent-in-s3 )
+
+{
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+          "Action": "s3:GetBucketAcl",
+          "Effect": "Allow",
+          "Resource": "arn:aws:s3:::logagent-in-s3",
+          "Principal": { "Service": "logs.us-east-1.amazonaws.com" }
+      },
+      {
+          "Action": "s3:PutObject" ,
+          "Effect": "Allow",
+          "Resource": "arn:aws:s3:::logagent-in-s3/*",
+          "Condition": { "StringEquals": { "s3:x-amz-acl": "bucket-owner-full-control" } },
+          "Principal": { "Service": "logs.us-east-1.amazonaws.com" }
+      }
+    ]
+}
+
+
+(bucket name & region should change while creating policy)
+
+
+9)now again go to  Export log data to Amazon S3 using the console in docs ,Export log data to Amazon S3 using the console .
+10) check th logs in bucket.
+
+
+	Thank you!
