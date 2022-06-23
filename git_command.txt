@@ -1,0 +1,25 @@
+git init ( for initi git)
+git config --global user.name "username"
+git config --global user.email "mailid"
+ssh-keygen -C "keyname" (for windows)
+git remote add origin <ssh of repo of github>
+git remote -v (for check the ssh is working or not)
+if getting error try this --    git remote remove origin
+git add file1 (from working area to staging area)
+git commit -m "anycomment" (staging are to local repo)
+git status
+git push origin master (code goes to remote repo--github)
+git pull origin master (to pull code from remote repo to working dir)
+git branch (to list branches)
+git branch branch_name (to create branch)
+git checkout branch_name (to chnage the branch)
+git checkout -b "branch_name ( to create & change the branch at the same time)
+git log (to check the logs)
+git log -10 ( to check recent 10 logs)
+git log --oneline ( to see the logs in one line with version id)
+git revert <version id/commit id> (go to previous version )
+git reset <filename>  (abort operation / goes from staging area to working dir)
+git fetch (remote repo to local repo) / ( file contents are not visible)
+git remote rm <fork repo name> (to remove fork)
+git branch -d <branch name> (to delete branch)
+git clone <url of remote repo form github>
